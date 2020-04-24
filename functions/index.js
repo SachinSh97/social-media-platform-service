@@ -112,9 +112,8 @@ exports.createNotificationOnComment = functions.firestore
         return;
       });
   });
-exports.onUserImageChange = functions
-  .region("europe-west1")
-  .firestore.document("/users/{userId}")
+exports.onUserImageChange = functions.firestore
+  .document("/users/{userId}")
   .onUpdate((change) => {
     console.log(change.before.data());
     console.log(change.after.data());
@@ -135,9 +134,8 @@ exports.onUserImageChange = functions
     } else return true;
   });
 
-exports.onScreamDelete = functions
-  .region("europe-west1")
-  .firestore.document("/screams/{screamId}")
+exports.onScreamDelete = functions.firestore
+  .document("/screams/{screamId}")
   .onDelete((snapshot, context) => {
     const screamId = context.params.screamId;
     const batch = db.batch();
