@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   ) {
     idToken = req.headers.authorization.split("Bearer ")[1];
   } else {
-    console.error("no  token found");
+    console.error("No token found");
     return res.status(403).json({ error: "Unauthorized" });
   }
 
@@ -17,7 +17,6 @@ module.exports = (req, res, next) => {
     .verifyIdToken(idToken)
     .then((decodedToken) => {
       req.user = decodedToken;
-
       return db
         .collection("users")
         .where("userId", "==", req.user.uid)
@@ -30,7 +29,7 @@ module.exports = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      console.error("Error while verifying token", err);
+      console.error("Error while verifying token ", err);
       return res.status(403).json(err);
     });
 };
