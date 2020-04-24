@@ -1,5 +1,5 @@
 # social-media-plateform
-social media platform like instagram,facebook .Create using react.js
+social media platform like instagram,facebook .Create using node.js
 =>backend-api's for-
   #user-signup
   #user-signin
